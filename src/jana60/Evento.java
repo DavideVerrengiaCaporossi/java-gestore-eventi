@@ -5,14 +5,14 @@ import java.time.format.DateTimeFormatter;
 
 public class Evento {
 private String titolo;
-private LocalDate dataEveneto;
+private LocalDate dataEvento;
 private int postiTotali;
 private int postiPrenotati;
 private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-public Evento(String titolo, LocalDate dataPrenotazione, int postiTotali)  throws Exception{
+public Evento(String titolo, LocalDate dataEveneto, int postiTotali)  throws Exception{
 	super();
 	this.titolo = titolo;
-	this.dataEveneto = dataPrenotazione;
+	this.dataEvento = dataEveneto;
 	this.postiTotali = postiTotali;
     controlloData();
 	controlloPosti();
@@ -25,7 +25,7 @@ public void setTitolo(String titolo) {
 	this.titolo = titolo;
 }
 public LocalDate getDataPrenotazione() {
-	return dataEveneto;
+	return dataEvento;
 }
 public int getPostiTotali() {
 	return postiTotali;
@@ -34,7 +34,7 @@ public int getPostiPrenotati() {
 	return postiPrenotati;
 }
 public void controlloData () throws Exception {
-	if(dataEveneto.isBefore(LocalDate.now())) {
+	if(dataEvento.isBefore(LocalDate.now())) {
 	throw new Exception ("data non valida");
 	}   
 }
@@ -52,7 +52,7 @@ public int prenota() throws Exception {
 	if(postiPrenotati == postiTotali ) {
 		throw new Exception ("capienza massima superata ");
    	}
-	if (dataEveneto.isBefore(LocalDate.now())) {
+	if (dataEvento.isBefore(LocalDate.now())) {
 		throw new Exception ("data evento superata");
 	}
 	postiPrenotati +=1;
@@ -61,7 +61,7 @@ public int prenota() throws Exception {
 /*disdici: riduce di uno i posti prenotati. Se l’evento è già passato o non ci sono
 prenotazioni deve sollevare un’eccezione.*/
 public int disdici() throws Exception {
-	if (dataEveneto.isBefore(LocalDate.now())) {
+	if (dataEvento.isBefore(LocalDate.now())) {
 		throw new Exception ("data evento superata");
 	}
 	if (postiPrenotati <= 0) {
