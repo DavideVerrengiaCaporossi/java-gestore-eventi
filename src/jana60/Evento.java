@@ -9,14 +9,22 @@ private LocalDate dataEvento;
 private int postiTotali;
 private int postiPrenotati;
 private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-public Evento(String titolo, LocalDate dataEveneto, int postiTotali)  throws Exception{
+public Evento(String titolo, LocalDate dataEveneto, int postiTotali,int postiPrenotati)  throws Exception{
 	super();
+	
 	this.titolo = titolo;
 	this.dataEvento = dataEveneto;
 	this.postiTotali = postiTotali;
+	this.postiPrenotati = postiPrenotati;
     controlloData();
 	controlloPosti();
 	
+}
+public int getPostiPrenotati() {
+	return postiPrenotati;
+}
+public void setPostiPrenotati(int postiPrenotati) {
+	this.postiPrenotati = postiPrenotati;
 }
 public String getTitolo() {
 	return titolo;
@@ -30,9 +38,7 @@ public LocalDate getDataPrenotazione() {
 public int getPostiTotali() {
 	return postiTotali;
 }
-public int getPostiPrenotati() {
-	return postiPrenotati;
-}
+
 public void controlloData () throws Exception {
 	if(dataEvento.isBefore(LocalDate.now())) {
 	throw new Exception ("data non valida");
@@ -67,8 +73,8 @@ public int disdici() throws Exception {
 	if (postiPrenotati <= 0) {
 		throw new Exception ("Nessuna prenotazione presente");
 	}
-	
-	return postiPrenotati=-1;	 
+	postiPrenotati -=1;
+	return postiPrenotati;	 
 	}
 /*l’override del metodo toString() in modo che venga restituita una stringa
 contenente: data formattata - titolo*/

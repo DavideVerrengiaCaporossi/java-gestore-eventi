@@ -34,15 +34,56 @@ public class Main {
 		int anno =Integer.parseInt(scan.nextLine());
 		
 		System.out.println(" inserisci Posti totali");
-		int capienza = Integer.parseInt(scan.nextLine());
+		int capienzaEvento = Integer.parseInt(scan.nextLine());
+		
+		System.out.println("inserisci posti da prenotare");
+		int postiPrenotati = Integer.parseInt(scan.nextLine());
 		
 		//creo l'ogetto che contine data
-		LocalDate dataEvento = LocalDate.of(giorno,mese,anno);
+		LocalDate dataEvento = LocalDate.of(anno,mese,giorno);
 		
-		//creo l'ogetto che contiene l'evento
-		Evento ev1 = new Evento(titoloEvento,dataEvento,capienza);
 		
+		try {
+			Evento ev1 = new Evento(titoloEvento,dataEvento,capienzaEvento,postiPrenotati);
+
+			System.out.println("vuoi fare altre penotazioni ? rispondi solo si/no");
+			
+		String prenotazioniEvento = scan.nextLine();
+		
+		if(prenotazioniEvento.equalsIgnoreCase("si")) {
+			System.out.println("quante prenotazioni vuoi aggiungere?");
+			
+			int numeroPrenotazioniAggiuntive = Integer.parseInt(scan.nextLine());
+			
+			for (int i = 0; i < numeroPrenotazioniAggiuntive ; i++) {
+				ev1.prenota();
+				
+			}
+		}
+		System.out.println("la capienza totale del evento e di: " +capienzaEvento+ " il numero delle persone che parteciperanno e di " + (capienzaEvento - ev1.getPostiPrenotati()) );
+		
+			System.out.println("vuoi disdire qualche prenotazioni ? si/no"); 
+			
+			String risposta = scan.nextLine();
+			
+			if(risposta.equalsIgnoreCase("si")) {
+				System.out.println("quante persone vuoi disdire?");
+				int numeroPersoneDisdette = Integer.parseInt(scan.nextLine());
+				for (int i = 0; i < numeroPersoneDisdette; i++) {
+					ev1.disdici();
+					
+				}
+			}
+			
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		
+		
+				
+			
 			scan.close();	
+			
 	}
 
 }
