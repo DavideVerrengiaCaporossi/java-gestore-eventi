@@ -9,13 +9,13 @@ private LocalDate dataEvento;
 private int postiTotali;
 private int postiPrenotati;
 private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-public Evento(String titolo, LocalDate dataEveneto, int postiTotali,int postiPrenotati)  throws Exception{
+public Evento(String titolo, LocalDate dataEveneto, int postiTotali)  throws Exception{
 	super();
 	
 	this.titolo = titolo;
 	this.dataEvento = dataEveneto;
 	this.postiTotali = postiTotali;
-	this.postiPrenotati = postiPrenotati;
+	this.postiPrenotati = 0;
     controlloData();
 	controlloPosti();
 	
@@ -23,9 +23,7 @@ public Evento(String titolo, LocalDate dataEveneto, int postiTotali,int postiPre
 public int getPostiPrenotati() {
 	return postiPrenotati;
 }
-public void setPostiPrenotati(int postiPrenotati) {
-	this.postiPrenotati = postiPrenotati;
-}
+
 public String getTitolo() {
 	return titolo;
 }
@@ -34,6 +32,10 @@ public void setTitolo(String titolo) {
 }
 public LocalDate getDataPrenotazione() {
 	return dataEvento;
+}
+public void setData(LocalDate dataEvento ) throws Exception{
+	this.dataEvento = dataEvento;
+	controlloData();
 }
 public int getPostiTotali() {
 	return postiTotali;

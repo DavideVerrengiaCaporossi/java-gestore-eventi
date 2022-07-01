@@ -36,15 +36,14 @@ public class Main {
 		System.out.println(" inserisci Posti totali");
 		int capienzaEvento = Integer.parseInt(scan.nextLine());
 		
-		System.out.println("inserisci posti da prenotare");
-		int postiPrenotati = Integer.parseInt(scan.nextLine());
+		
 		
 		//creo l'ogetto che contine data
 		LocalDate dataEvento = LocalDate.of(anno,mese,giorno);
 		
 		
 		try {
-			Evento ev1 = new Evento(titoloEvento,dataEvento,capienzaEvento,postiPrenotati);
+			Evento ev1 = new Evento(titoloEvento,dataEvento,capienzaEvento);
 
 			System.out.println("vuoi fare altre penotazioni ? rispondi solo si/no");
 			
@@ -74,8 +73,9 @@ public class Main {
 					
 				}
 			}
-			System.out.println("la capienza totale del evento e di: " +capienzaEvento+ " il numero dei posti disponibili" + (capienzaEvento - ev1.getPostiPrenotati()) );
-		} catch (Exception e) {
+			System.out.println("la capienza totale del evento e di: " +capienzaEvento+ " il numero dei posti disponibili " + (capienzaEvento - ev1.getPostiPrenotati()) );
+		}
+		catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
 		
