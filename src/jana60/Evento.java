@@ -1,7 +1,7 @@
 package jana60;
 
 import java.time.LocalDate;
-
+import java.time.format.DateTimeFormatter;
 
 public class Evento {
 private String titolo;
@@ -9,7 +9,7 @@ private LocalDate dataPrenotazione;
 private LocalDate dataOggi = LocalDate.now();
 private int postiTotali = 400;
 private int postiPrenotati = 0 ;
-
+private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 public Evento(String titolo, LocalDate dataOggi, int postiTotali) {
 	super();
 	this.titolo = titolo;
@@ -34,6 +34,7 @@ public int getPostiPrenotati() {
 public void controlloData () throws Exception {
 	if(dataPrenotazione.isBefore(dataOggi)) {
 	throw new Exception ("data non valida");
-	}
+	}   
+
 }
 }
