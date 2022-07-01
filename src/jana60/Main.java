@@ -38,14 +38,15 @@ public class Main {
 		
 		
 		
+		
 		//creo l'ogetto che contine data
 		LocalDate dataEvento = LocalDate.of(anno,mese,giorno);
 		
 		
 		try {
 			Evento ev1 = new Evento(titoloEvento,dataEvento,capienzaEvento);
-
-			System.out.println("vuoi fare altre penotazioni ? rispondi solo si/no");
+			
+			System.out.println("vuoi prenotare? si/no");
 			
 		String prenotazioniEvento = scan.nextLine();
 		
