@@ -60,7 +60,7 @@ public class Main {
 				
 			}
 		}
-		System.out.println("la capienza totale del evento e di: " +capienzaEvento+ " il numero delle persone che parteciperanno e di " + (capienzaEvento - ev1.getPostiPrenotati()) );
+		System.out.println("la capienza totale del evento e di: " +capienzaEvento+ " il numero dei posti disponibili " + (capienzaEvento - ev1.getPostiPrenotati()) );
 		
 			System.out.println("vuoi disdire qualche prenotazioni ? si/no"); 
 			
@@ -74,7 +74,7 @@ public class Main {
 					
 				}
 			}
-			
+			System.out.println("la capienza totale del evento e di: " +capienzaEvento+ " il numero dei posti disponibili" + (capienzaEvento - ev1.getPostiPrenotati()) );
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
